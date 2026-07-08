@@ -1,0 +1,31 @@
+# Environment variables and secrets
+.env
+
+# Local Qdrant vector database
+qdrant_db/
+
+# Docling parsed text caches
+output/
+
+# Python caching
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Editor and OS files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+Thumbs.db
+ehthumbs.db
+Desktop.ini

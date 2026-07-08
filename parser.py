@@ -362,34 +362,22 @@ class PDFExtractor:
 
             output["pages"].append(page_data)
 
+        pdf_basename = os.path.splitext(os.path.basename(self.pdf_path))[0]
         json_path = os.path.join(
-
             self.output_dir,
-
-            "document.json"
-
+            f"{pdf_basename}.json"
         )
 
         with open(
-
             json_path,
-
             "w",
-
             encoding="utf-8"
-
         ) as f:
-
             json.dump(
-
                 output,
-
                 f,
-
                 indent=4,
-
                 ensure_ascii=False
-
             )
 
         print("Saved:", json_path)

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KnowledgeBase RAG - Chat with your PDFs</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Main JavaScript Logic -->
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar: File & Indexing Management -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span class="logo-icon"><i class="fa-solid fa-brain-circuit"></i></span>
+                    <div class="logo-text">
+                        <h1>PDF Intelligence</h1>
+                        <span class="subtext">Retrieval-Augmented Chat</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configuration Status Card -->
+            <div class="card status-card">
+                <div class="card-title">
+                    <span><i class="fa-solid fa-server"></i> System Status</span>
+                    <span class="status-indicator" id="status-dot"></span>
+                </div>
+                <div class="status-details">
+                    <div class="status-item">
+                        <span class="label">Azure OpenAI:</span>
+                        <span class="val" id="status-openai">Checking...</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">Qdrant Storage:</span>
+                        <span class="val" id="status-qdrant">Checking...</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">Total Docs:</span>
+                        <span class="val highlight" id="status-docs">0</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="label">Vector Chunks:</span>
+                        <span class="val highlight" id="status-chunks">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ingest Trigger & Progress -->
+            <div class="card action-card">
+                <button class="btn btn-primary" id="btn-ingest">
+                    <span class="btn-icon"><i class="fa-solid fa-folder-open"></i></span>
+                    <span class="btn-label">Scan & Ingest PDFs</span>
+                </button>
+                <p class="help-text">Scans <strong>input/</strong> folder for new files</p>
+
+                <!-- Ingestion Progress Panel (Hidden by default) -->
+                <div class="progress-panel" id="progress-panel" style="display: none;">
+                    <div class="progress-header">
+                        <span id="progress-label">Ingesting...</span>
+                        <span id="progress-percentage">0%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="progress-logs" id="progress-logs"></div>
+                </div>
+            </div>
+
+            <!-- Document list -->
+            <div class="doc-list-section">
+                <div class="section-header-row">
+                    <h2><i class="fa-solid fa-file-pdf"></i> Ingested Documents</h2>
+                    <span class="badge" id="doc-count-badge">0</span>
+                </div>
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="doc-search" placeholder="Search ingested files...">
+                </div>
+                <div class="doc-list" id="doc-list">
+                    <!-- Dynamic Document Rows -->
+                    <div class="doc-list-empty">
+                        <i class="fa-solid fa-folder-closed"></i>
+                        <p>No documents indexed yet.</p>
+                        <span>Put PDFs in the <code>input/</code> folder and click "Scan & Ingest".</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer credits -->
+            <div class="sidebar-footer">
+                <span>Antigravity PDF RAG v1.0</span>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area">
+            <!-- Top bar -->
+            <header class="chat-header">
+                <div class="header-info">
+                    <span class="chat-title-icon"><i class="fa-regular fa-comments"></i></span>
+                    <div>
+                        <h2>Interactive PDF Chatbot</h2>
+                        <p id="chat-sub">Ask questions based on your parsed documents</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" id="btn-clear-chat" title="Clear chat history">
+                        <i class="fa-solid fa-trash-can"></i> Clear
+                    </button>
+                </div>
+            </header>
+
+            <!-- Chat Window -->
+            <div class="chat-window" id="chat-window">
+                <!-- Welcome Screen -->
+                <div class="welcome-screen" id="welcome-screen">
+                    <div class="welcome-logo">
+                        <i class="fa-solid fa-comments-question"></i>
+                    </div>
+                    <h2>How can I help you today?</h2>
+                    <p>Ask queries about the uploaded PDF files. The assistant will search the vector database, find corresponding passages, and answer with exact page citations.</p>
+                    
+                    <div class="suggested-queries">
+                        <h3>Suggested Questions:</h3>
+                        <div class="suggestions-grid">
+                            <button class="btn-suggestion">What are the primary procedures described in the documents?</button>
+                            <button class="btn-suggestion">Summarize the main requirements mentioned in the texts.</button>
+                            <button class="btn-suggestion">List the key category definitions or security rules.</button>
+                            <button class="btn-suggestion">What is the context of Destination Details in Reporting?</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Context Inspector Drawer (Displays retrieved passages) -->
+            <div class="context-drawer" id="context-drawer">
+                <div class="drawer-header">
+                    <h3><i class="fa-solid fa-list-check"></i> Source Citations / Retrieved Context</h3>
+                    <button class="btn-close-drawer" id="btn-close-drawer">&times;</button>
+                </div>
+                <div class="drawer-content" id="drawer-content">
+                    <!-- Dynamic source list -->
+                </div>
+            </div>
+
+            <!-- Input area -->
+            <footer class="chat-input-area">
+                <form id="chat-form" class="chat-form">
+                    <input type="text" id="chat-input" placeholder="Type a message or ask a question about your documents..." autocomplete="off" required>
+                    <button type="submit" class="btn btn-send" id="btn-send">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
