@@ -1,0 +1,239 @@
+{
+    "document_name": "sample.pdf",
+    "pages": [
+        {
+            "page_number": 1,
+            "items": [
+                {
+                    "type": "page_header",
+                    "text": "Cisco Umbrella DNS Documentation"
+                },
+                {
+                    "type": "section_header",
+                    "text": "Search"
+                },
+                {
+                    "type": "list_item",
+                    "text": "2"
+                },
+                {
+                    "type": "text",
+                    "text": "Book Search this book"
+                },
+                {
+                    "type": "text",
+                    "text": "Reports Top Destinations Report Destination Details View the Destination Details"
+                },
+                {
+                    "type": "text",
+                    "text": "Last updated: Feb 13, 2026"
+                },
+                {
+                    "type": "section_header",
+                    "text": "View the Destination Details"
+                },
+                {
+                    "type": "section_header",
+                    "text": "Procedure"
+                },
+                {
+                    "type": "list_item",
+                    "text": "1 Navigate to Reporting > Additional Reports > Top Destinations and click a domain to explore."
+                },
+                {
+                    "type": "text",
+                    "text": "You can also search for a destination in the Top Destinations Report. When you search for a destination, Umbrella returns any related"
+                },
+                {
+                    "type": "text",
+                    "text": "domains and subdomains."
+                },
+                {
+                    "type": "list_item",
+                    "text": "Choose a time frame to view the Destination Details."
+                },
+                {
+                    "type": "text",
+                    "text": "Like other Umbrella reports, the Destination Details can be filtered by time: the last 24 hours, the previous calendar day (yesterday), the last seven days, the last month, or a custom range within the last 30 days."
+                },
+                {
+                    "type": "page_footer",
+                    "text": "View the Destination Details"
+                },
+                {
+                    "type": "page_footer",
+                    "text": "Page 1 of 2"
+                },
+                {
+                    "type": "picture",
+                    "text": "Search",
+                    "image_text": "Search"
+                },
+                {
+                    "type": "picture",
+                    "text": "View the Destination Details Procedure Navigate to Reporting Additional Reports Destinations anc click a domain to explore: Ico De:u5& : [ You can also search for a destination in the Destinations Report: When you search for a destination; Umbrella returns any related domains and subdomains 7filters Filter Dy Identity or Domain 2 Choose a time frame to view the Destination Details Top Top",
+                    "image_text": "View the Destination Details Procedure Navigate to Reporting Additional Reports Destinations anc click a domain to explore: Ico De:u5& : [ You can also search for a destination in the Destinations Report: When you search for a destination; Umbrella returns any related domains and subdomains 7filters Filter Dy Identity or Domain 2 Choose a time frame to view the Destination Details Top Top"
+                },
+                {
+                    "type": "picture",
+                    "text": "You can also search for a destination in the Top Destinations Report: When you search for a destination; Umbrella returns any related domains and subdomains: FLTERS Filter by Identity or Domain 2 Choose a time frame to view the Destination Details. Like other Umbrella reports, the Destination Details can be filtered by",
+                    "image_text": "You can also search for a destination in the Top Destinations Report: When you search for a destination; Umbrella returns any related domains and subdomains: FLTERS Filter by Identity or Domain 2 Choose a time frame to view the Destination Details. Like other Umbrella reports, the Destination Details can be filtered by"
+                },
+                {
+                    "type": "list",
+                    "text": "group"
+                },
+                {
+                    "type": "list",
+                    "text": "group"
+                },
+                {
+                    "type": "list",
+                    "text": "group"
+                },
+                {
+                    "type": "list",
+                    "text": "group"
+                }
+            ]
+        },
+        {
+            "page_number": 2,
+            "items": [
+                {
+                    "type": "page_header",
+                    "text": "Cisco Umbrella DNS Documentation"
+                },
+                {
+                    "type": "list_item",
+                    "text": "3 View the destination's content and security categories."
+                },
+                {
+                    "type": "text",
+                    "text": "At the top of the report, under the domain for the destination you are viewing, are any categories associated with the destination. For category definitions, see"
+                },
+                {
+                    "type": "text",
+                    "text": "Content Category Definitions and Security Categories."
+                },
+                {
+                    "type": "text",
+                    "text": "If you believe this destination belongs in a security category, click Suggest Security Categorization and fill out the request which creates an internal Umbrella ticket for a security researcher to review. Then, click Send ."
+                },
+                {
+                    "type": "text",
+                    "text": "Prerequisites"
+                },
+                {
+                    "type": "text",
+                    "text": "View the Request Traffic"
+                },
+                {
+                    "type": "text",
+                    "text": "Source: https://securitydocs.cisco.com/docs/umbrella-dns/olh/147386.dita"
+                },
+                {
+                    "type": "text",
+                    "text": "Previous topic"
+                },
+                {
+                    "type": "text",
+                    "text": "Next topic"
+                },
+                {
+                    "type": "text",
+                    "text": "à LAST 7 DAYS"
+                },
+                {
+                    "type": "text",
+                    "text": "Last 24 Hours"
+                },
+                {
+                    "type": "text",
+                    "text": "Yesterday"
+                },
+                {
+                    "type": "text",
+                    "text": "Last 7 Days"
+                },
+                {
+                    "type": "text",
+                    "text": "Last 30 Days"
+                },
+                {
+                    "type": "text",
+                    "text": "Custom range..."
+                },
+                {
+                    "type": "text",
+                    "text": "login.live.com"
+                },
+                {
+                    "type": "text",
+                    "text": "CISCO"
+                },
+                {
+                    "type": "text",
+                    "text": "Search Engines, Software/Technology"
+                },
+                {
+                    "type": "text",
+                    "text": "SUGGEST SECURITY CATEGORIZATION"
+                },
+                {
+                    "type": "text",
+                    "text": "2532 Requests"
+                },
+                {
+                    "type": "text",
+                    "text": "x"
+                },
+                {
+                    "type": "text",
+                    "text": "Request Security Reclassification"
+                },
+                {
+                    "type": "text",
+                    "text": "www.displaycontentnetwork.com is not currently in a security"
+                },
+                {
+                    "type": "text",
+                    "text": "category."
+                },
+                {
+                    "type": "text",
+                    "text": "Something not right? Let us know why this destination should be reclassified"
+                },
+                {
+                    "type": "text",
+                    "text": "below."
+                },
+                {
+                    "type": "text",
+                    "text": "Why should www.displaycontentnetwork.com be reclassified?"
+                },
+                {
+                    "type": "text",
+                    "text": "CANCEL"
+                },
+                {
+                    "type": "text",
+                    "text": "SEND"
+                },
+                {
+                    "type": "page_footer",
+                    "text": "View the Destination Details"
+                },
+                {
+                    "type": "page_footer",
+                    "text": "Page 2 of 2"
+                },
+                {
+                    "type": "picture",
+                    "text": "Cisco Umbrella DNS Documentation Source: https:/ /securityc ocs cisco com/docs/umbrella-dns/olh/147486.dita LAST 7 DAYS Last 24 Hcuts Yesterday Last ? Days Last 30 Days Custom rango  - CLL_ BI 3 View the destination's content and security categories At the top of the report; under the domain for the destination you are viewing, are any categories associated with the destination: For category definitions; see Content Category_Definitions and Security_Categories: aain 9 login live com Ciaco Search Enalnes Sofneare HTechnolony SUGGEST SECURMTY CATEGORIZATION 2532 Red_4sts If you believe this destination belongs in a security_category, click Suggest Security Categorization and fill out the request which creates an internal Umbrella ticket for a security researcher to review: Then, click Send: Reques: Security Reclassification WWW displaycontentnctwork com not currently in & security categon; Somcthing not right? Lot us knov\" why tnis ocstinauion snould De reclass f ed Dclow wny snould wwr\" d splaycontontnotork com DC reclassifed? CANCEL SEND Previous topic Next topic Prerequisites View the Request Traffic View the Destination Details Page 2 of 2",
+                    "image_text": "Cisco Umbrella DNS Documentation Source: https:/ /securityc ocs cisco com/docs/umbrella-dns/olh/147486.dita LAST 7 DAYS Last 24 Hcuts Yesterday Last ? Days Last 30 Days Custom rango  - CLL_ BI 3 View the destination's content and security categories At the top of the report; under the domain for the destination you are viewing, are any categories associated with the destination: For category definitions; see Content Category_Definitions and Security_Categories: aain 9 login live com Ciaco Search Enalnes Sofneare HTechnolony SUGGEST SECURMTY CATEGORIZATION 2532 Red_4sts If you believe this destination belongs in a security_category, click Suggest Security Categorization and fill out the request which creates an internal Umbrella ticket for a security researcher to review: Then, click Send: Reques: Security Reclassification WWW displaycontentnctwork com not currently in & security categon; Somcthing not right? Lot us knov\" why tnis ocstinauion snould De reclass f ed Dclow wny snould wwr\" d splaycontontnotork com DC reclassifed? CANCEL SEND Previous topic Next topic Prerequisites View the Request Traffic View the Destination Details Page 2 of 2"
+                }
+            ]
+        }
+    ]
+}
