@@ -1,0 +1,3 @@
+hdbscan
+scikit-learn
+numpy

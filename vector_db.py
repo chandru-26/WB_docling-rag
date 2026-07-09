@@ -71,6 +71,14 @@ class VectorDB:
                 "pages": chunk["pages"],
                 "chunk_index": chunk["chunk_index"]
             }
+            # Add clustering metadata if present
+            if "cluster_id" in chunk:
+                payload["cluster_id"] = chunk["cluster_id"]
+            if "cluster_probability" in chunk:
+                payload["cluster_probability"] = chunk["cluster_probability"]
+            if "is_noise" in chunk:
+                payload["is_noise"] = chunk["is_noise"]
+
             points.append(
                 PointStruct(
                     id=point_id,
@@ -112,7 +120,10 @@ class VectorDB:
                 "metadata": {
                     "document_name": hit.payload.get("document_name", ""),
                     "pages": hit.payload.get("pages", []),
-                    "chunk_index": hit.payload.get("chunk_index", 0)
+                    "chunk_index": hit.payload.get("chunk_index", 0),
+                    "cluster_id": hit.payload.get("cluster_id"),
+                    "cluster_probability": hit.payload.get("cluster_probability"),
+                    "is_noise": hit.payload.get("is_noise")
                 }
             })
         return hits

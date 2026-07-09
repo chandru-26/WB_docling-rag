@@ -10,6 +10,7 @@ from parser import PDFExtractor
 from ai_service import AIService
 from vector_db import VectorDB
 from agentic_chunker import AgenticChunker
+from clustering import normalize_embeddings, cluster_embeddings, assign_metadata_to_chunks
 
 
 # Setup logging
@@ -189,10 +190,17 @@ class IngestionPipeline:
             logger.info(f"Generating embeddings for {len(chunks)} chunks using Azure OpenAI...")
             chunk_texts = [c["text"] for c in chunks]
             embeddings = self.ai_service.get_embeddings_batch(chunk_texts)
+            logger.info(f"Number of embeddings: {len(embeddings)}")
+
+            # 3.5. Clustering pipeline
+            normalized_embs = normalize_embeddings(embeddings)
+            labels, probabilities = cluster_embeddings(normalized_embs)
+            chunks = assign_metadata_to_chunks(chunks, labels, probabilities)
 
             # 4. Store in Qdrant
             logger.info(f"Storing chunks in Qdrant...")
             self.vector_db.upsert_chunks(chunks, embeddings)
+            logger.info(f"Upload completed.")
             logger.info(f"Successfully finished processing '{pdf_basename}'.")
             return True
 
