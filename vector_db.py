@@ -71,7 +71,6 @@ class VectorDB:
                 "pages": chunk["pages"],
                 "chunk_index": chunk["chunk_index"]
             }
-            # Add clustering metadata if present
             if "cluster_id" in chunk:
                 payload["cluster_id"] = chunk["cluster_id"]
             if "cluster_probability" in chunk:

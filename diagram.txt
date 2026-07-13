@@ -1,0 +1,57 @@
+flowchart TD
+
+    %% ==========================
+    %% Ingestion Pipeline
+    %% ==========================
+
+    A([Start]) --> B[Detect New PDF Files]
+    B --> C[Parse PDF using Docling]
+
+    C --> D[Extract Text]
+    C --> E[Extract Tables]
+    C --> F[Extract Images]
+    C --> G[Remove Headers & Footers]
+
+    D --> H[Structured JSON Output]
+    E --> H
+    F --> H
+    G --> H
+
+    H --> I{Chunking Strategy}
+
+    I -->|Agentic| J[LLM-based Semantic Chunking]
+    I -->|Classic| K[Sliding Window Chunking]
+
+    J --> L[Generate Embeddings<br/>Azure text-embedding-3-large]
+    K --> L
+
+    L --> M[L2 Normalize Embeddings]
+
+    M --> N[HDBSCAN Clustering]
+
+    N --> O[Assign Cluster Metadata<br/>Cluster ID<br/>Probability<br/>Noise Flag]
+
+    O --> P[Upload Vectors + Metadata<br/>to Qdrant]
+
+    P --> Q[(Qdrant Vector Database)]
+
+
+    %% ==========================
+    %% Query Pipeline
+    %% ==========================
+
+    R([User Question]) --> S[Generate Query Embedding]
+
+    S --> T[Vector Search in Qdrant]
+
+    Q --> T
+
+    T --> U[Retrieve Top-K Chunks]
+
+    U --> V[Collect Metadata<br/>Document<br/>Page<br/>Chunk ID<br/>Cluster]
+
+    V --> W[Build Context]
+
+    W --> X[GPT-4 Answer Generation]
+
+    X --> Y([Answer + Citations])
